@@ -2,7 +2,7 @@
 
 <h2>Enter a New Movie</h2>
 
-<form action="/flights" method="post">
+<form id="new-form" action="/flights" method="post">
   <label
     >Airline:
     <input type="text" name="airline" />
@@ -23,6 +23,9 @@
     <input type="date" name="departs" />
   </label>
   <br />
+  <input type="submit" value="Add Flight" />
 </form>
+
+<p><%= errorMsg %></p>
 
 <%- include('../partials/footer') %> ```
