@@ -2,6 +2,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const destinationSchema = require("./destination");
 
 const flightSchema = new Schema({
   airline: {
@@ -31,6 +32,7 @@ const flightSchema = new Schema({
       return date;
     },
   },
+  destinations: [destinationSchema],
 });
 
 module.exports = mongoose.model("Flight", flightSchema);
