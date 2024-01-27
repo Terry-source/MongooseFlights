@@ -14,7 +14,7 @@ body {
     "main";
 }
 
-body > nav {
+body>nav {
   grid-area: nav;
   background-color: #b8c0c2;
   display: flex;
@@ -23,13 +23,13 @@ body > nav {
   padding: 0 20px 0 30px;
 }
 
-nav > img {
+nav>img {
   width: 34px;
   object-fit: contain;
   margin-right: auto;
 }
 
-body > main {
+body>main {
   grid-area: main;
   display: flex;
   flex-direction: column;
@@ -39,23 +39,23 @@ body > main {
   overflow-y: scroll;
 }
 
-body > main h1:first-child {
+body>main h1:first-child {
   margin-bottom: 50px;
 }
 
-nav > a {
+nav>a {
   margin: 20px;
   text-decoration: none;
   padding: 10px;
   border-radius: 5px;
 }
 
-nav > a:hover:not(.active) {
+nav>a:hover:not(.active) {
   color: white;
   background-color: #424748;
 }
 
-nav > a.active {
+nav>a.active {
   color: white;
   cursor: default;
 }
@@ -188,4 +188,9 @@ hr {
 .review-user img {
   border-radius: 50%;
   height: 40px;
+}
+
+.past-flight {
+  color: red;
+  background-color: darkred;
 }
