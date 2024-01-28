@@ -27,9 +27,18 @@
     </label>
     <br />
     <label>Departure Date:
-      <input type="datetime-local" name="departs" value="<%= departs %>" />
+      <input type="datetime-local" name="departs" value="<%= departdatetime %>" />
     </label>
     <br />
+    <label>Destination:
+      <select name="destinations" value="LAX" />
+      <option value="DEN">Denver</option>
+      <option value="LAX">Los Angeles</option>
+      <option value="AUS">Austin</option>
+      <option value="SEA">Seattle</option>
+      <option value="SAN">San Francisco</option>
+      </select>
+    </label>
     <input type="submit" value="Add Flight" />
   </form>
 

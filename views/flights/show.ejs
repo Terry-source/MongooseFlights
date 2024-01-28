@@ -1,14 +1,26 @@
-<%- includes('../partials/header.ejs') %>
+<%- include('../partials/header.ejs') %>
 
-<section id="show-page">
-  <div>Airline:</div>
-  <div><%= flights.airline %></div>
-  <div>Airport:</div>
-  <div><%= flights.airport %></div>
-  <div>Flight Number:</div>
-  <div><%= flights.flightNo %></div>
-  <div>Departure Date:</div>
-  <div><%= flights.departs %></div>
-</section>
+  <section id="show-page">
+    <div>Airline:</div>
+    <div>
+      <%= flight.airline %>
+    </div>
+    <div>Airport:</div>
+    <div>
+      <%= flight.airport %>
+    </div>
+    <div>Flight Number:</div>
+    <div>
+      <%= flight.flightNo %>
+    </div>
+    <div>Departure Date:</div>
+    <div>
+      <%= flight.departs %>
+    </div>
+    <div>Destination:</div>
+    <div>
+      <%= flight.destinations %>
+    </div>
+  </section>
 
-<%- includes('../partials/footer.ejs') %>
+  <%- include('../partials/footer.ejs') %>

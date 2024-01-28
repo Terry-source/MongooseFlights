@@ -38,8 +38,21 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
+
+  console.log(req.params.id);
+
   const flight = await Flight.findById(req.params.id);
-  res.render("flights/show", { title: "Flight Detail", flight });
+  res.render('flights/show', { title: 'Flight Detail', flight });
+
+  // res.redirect("/");
+
+  // try {
+  //   const flight = await Flight.findById(req.params.id);
+  //   res.render("flights/show", { title: "Flight Detail", flight });
+  // } catch (err) {
+  //   console.error('Error fetching flight details:', err);
+  //   res.redirect("/");
+  // }
 }
 
 function newFlight(req, res) {
@@ -52,7 +65,7 @@ function newFlight(req, res) {
     title: "Add New Flight",
     formattedDate,
     errorMsg: "",
-    departs: formattedDate,
+    departdatetime: formattedDate,
   });
 }
 
