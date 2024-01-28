@@ -22,8 +22,6 @@ async function create(req, res) {
     if (req.body[key] === "") delete req.body[key];
   }
 
-
-
   try {
     await Flight.create(req.body);
     res.redirect("/");
@@ -56,16 +54,22 @@ async function show(req, res) {
 }
 
 function newFlight(req, res) {
-  const newFlight = new Flight(); // includes the default departure date
+  // const newFlight = new Flight(); // includes the default departure date
 
-  // Format the date for the datetime-local input
-  const formattedDate = newFlight.departs.toISOString().slice(0, 16);
+  // // Format the date for the datetime-local input
+  // const formattedDate = newFlight.departs.toISOString().slice(0, 16);
+
+  const now = new Date();
+  const offset = now.getTimezoneOffset() * 60000;
+  const formattedDate = (new Date(now - offset)).toISOString().slice(0, 16);
+
+  console.log(formattedDate);
 
   res.render("flights/new", {
     title: "Add New Flight",
     formattedDate,
     errorMsg: "",
-    departdatetime: formattedDate,
+    formattedDate,
   });
 }
 
