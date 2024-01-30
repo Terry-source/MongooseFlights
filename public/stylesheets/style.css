@@ -66,9 +66,7 @@ nav>a.active {
   grid-template-columns: repeat(2, minmax(auto, 22rem));
 }
 
-#new-form *,
-#add-review-form *,
-#add-performer-form * {
+#new-form * {
   font-size: 20px;
   padding: 5px;
   border-radius: 5px;
@@ -200,4 +198,18 @@ hr {
 .past-flight {
   color: red;
   background-color: darkred;
+}
+
+/* Styling for Forms */
+.form-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Styling for Submit Buttons */
+.form-submit {
+  width: 10rem;
+  grid-column: 2 / 3;
 }

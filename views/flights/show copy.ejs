@@ -1,0 +1,72 @@
+<%- include('../partials/header.ejs') %>
+
+  <section id="show-page">
+    <div>Airline:</div>
+    <div>
+      <%= flight.airline %>
+    </div>
+    <div>Airport:</div>
+    <div>
+      <%= flight.airport %>
+    </div>
+    <div>Flight Number:</div>
+    <div>
+      <%= flight.flightNo %>
+    </div>
+    <div>Departure Date:</div>
+    <div>
+      <%= flight.departs %>
+    </div>
+<br><br>
+<div>
+<h2>Destination:</h2>
+</div>
+<div>
+<form id="add-review-form" method="POST"
+  action="/flights/<%= flight._id %>/destinations">
+  <label>Airport:</label>
+  <select name="airport">
+    <option value="DEN">Denver</option>
+    <option value="LAX">Los Angeles</option>
+    <option value="AUS">Austin</option>
+    <option value="SEA">Seattle</option>
+    <option value="SAN" selected>San Francisco</option>
+  </select>
+  <br>
+  <label>Arrival Date:</label>
+  <input type="datetime-local" name="arrival">
+  <br>
+  <input type="submit" value="Add Destination">
+</form>
+</div>
+
+    <div>
+      <% if (flight.destinations.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Airport</th>
+              <th>Arrival</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% flight.destinations.forEach(function(destination) { %>
+              <tr>
+                <td><%= destination.airport %></td>
+                <td><%= destination.arrival %></td>
+                <td>
+                  <form id="delete-destination-form" method="POST"
+                    action="/flights/<%= flight._id %>/destinations/<%= destination._id %>?_method=DELETE">
+                    <input type="submit" value="Delete">
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <% }; %>
+    </div>
+  </section>
+
+  <%- include('../partials/footer.ejs') %>
