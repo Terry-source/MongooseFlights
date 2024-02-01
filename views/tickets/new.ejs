@@ -2,6 +2,8 @@
 
     <h2>New Ticket for Flight <%= flightId %>
     </h2>
+    <a href="/flights/<%= flightId %>/tickets">Test Button</a>
+
     <form action="/flights/<%= flightId %>/tickets" method="post">
         <div>
             <label for="seat">Seat</label>

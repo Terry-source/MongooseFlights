@@ -19,6 +19,8 @@ async function newTicket(req, res) {
     const flight = await Flight.findById(req.params.id);
     const flightId = req.params.id;
 
+    console.log(req.baseUrl);
+
     res.render("tickets/new", {
         title: "Add New Flight",
         errorMsg: "",
@@ -26,6 +28,9 @@ async function newTicket(req, res) {
         flightId,
     });
 }
+
+// flight,
+// flightId,
 
 module.exports = {
     create,
