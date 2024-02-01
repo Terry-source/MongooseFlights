@@ -1,4 +1,4 @@
-const Flights = require('../models/flight');
+const Flight = require('../models/flight');
 
 module.exports = {
     create,
@@ -6,7 +6,7 @@ module.exports = {
 };
 
 async function create(req, res) {
-    const flight = await Flights.findById(req.params.id);
+    const flight = await Flight.findById(req.params.id);
     
     flight.destinations.push(req.body);
 

@@ -1,4 +1,5 @@
 const Flight = require("../models/flight");
+const Ticket = require("../models/ticket");
 
 async function index(req, res, next) {
   const flights = await Flight.find({}).sort('departs');
@@ -40,17 +41,27 @@ async function show(req, res) {
   console.log(req.params.id);
 
   const flight = await Flight.findById(req.params.id);
-  res.render('flights/show', { title: 'Flight Detail', flight });
 
-  // res.redirect("/");
+  const tickets = flight.tickets.length ? flight.tickets : [];
 
-  // try {
-  //   const flight = await Flight.findById(req.params.id);
-  //   res.render("flights/show", { title: "Flight Detail", flight });
-  // } catch (err) {
-  //   console.error('Error fetching flight details:', err);
-  //   res.redirect("/");
-  // }
+  res.render('flights/show', { title: 'Flight Detail', flight, tickets });
+}
+
+async function show2(req, res) {
+  try {
+    const flight = await Flight.findById(req.params.id);
+    if (!flight) {
+      res.status(404).send('Flight not found');
+      return;
+    }
+
+    const tickets = await Ticket.find({ flight: flight._id });
+
+    res.render('flights/show', { title: 'Flight Detail', flight, tickets });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
 }
 
 function newFlight(req, res) {
@@ -67,7 +78,6 @@ function newFlight(req, res) {
 
   res.render("flights/new", {
     title: "Add New Flight",
-    formattedDate,
     errorMsg: "",
     formattedDate,
   });
@@ -78,4 +88,5 @@ module.exports = {
   new: newFlight,
   create,
   show,
+  show2,
 };
